@@ -18,5 +18,6 @@ setup(name='mongo-migrate',
         author_email='largetalk@gmail.com',
         url='',
         packages=get_packages('mongo_migrate'),
+        scripts=['mongo_migrate/bin/mongration.py'],
         install_requires=[],
         )
