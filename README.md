@@ -6,22 +6,21 @@ based on pymongo
 
 usage:
 
-    mongration -h localhost -p 27017 -d test -l ./migrations up target
+    mongration -H localhost -P 27017 -d test -l ./migrations cmd
 
--h: mongodb server ip
+-H: mongodb server ip
 
--p: mongodb server port
+-P: mongodb server port
 
 -d: which databases will be migrate
 
 -l: migration file location
 
-up: action
+cmd: command, include up, down, list
 
-target: migration version
 
 for django:
 
-    python manage.py mongration up target
+    python manage.py mongration up
 
 
