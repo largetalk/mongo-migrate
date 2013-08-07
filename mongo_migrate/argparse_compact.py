@@ -3,7 +3,9 @@ import sys
 import traceback
 
 import mongo_migrate
-from mongo_migrate.cmd import MigrateCommand, ListCommand
+from mongo_migrate.cmd import UpMigrateCommand
+from mongo_migrate.cmd import DownMigrateCommand
+from mongo_migrate.cmd import ListCommand
 
 class Argument(object):
     def __init__(self):
@@ -43,8 +45,8 @@ class Argument(object):
 
     def cmd_factory(self, args):
         cmd_mapping = {
-            'up': 'MigrateCommand',
-            'down': 'MigrateCommand',
+            'up': 'UpMigrateCommand',
+            'down': 'DownMigrateCommand',
             'list': 'ListCommand',
         }
         return eval(cmd_mapping[args.cmd])(args)
@@ -79,3 +81,4 @@ if __name__ == '__main__':
     print args
     print args.database
     print args.host
+    print args.port, type(args.port)

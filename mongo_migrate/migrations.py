@@ -10,6 +10,7 @@ class Migrator(object):
         self._fake = fake
 
     def up(self):
+        print 'migrating %s' % migration_js
         command = u'mongo {host}:{port}/{db} --eval "target=\'{target}\'" \'{file}\''.format(**{'host': MongoConfig.host,
             'port': MongoConfig.port,
             'db': MongoConfig.db,
@@ -32,13 +33,3 @@ class Migrator(object):
             pass
 
 
-
-class Migrations(object):
-    def __init__(self, js_folder):
-        self.js_folder = js_folder
-
-    def up(self, target=None):
-        pass
-
-    def down(self, target):
-        pass

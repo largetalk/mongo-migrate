@@ -6,7 +6,7 @@ import os
 class BaseCommand(object):
     def __init__(self, args):
         self.js_path = args.location
-        self.db = MongoClient(MongoConfig.host, MongoClient.port)[MongoConfig.db]
+        self.db = MongoClient(MongoConfig.host, MongoConfig.port)[MongoConfig.db]
         self.his_collect = self.db[MongoConfig.his_collect]
 
     @property
@@ -26,10 +26,10 @@ class BaseCommand(object):
     def execute(self):
         raise NotImplementedError
 
-class MigrateCommand(BaseCommand):
+class UpMigrateCommand(BaseCommand):
     def __init__(self, args):
         self.direction = True if args.cmd == 'up' else False
-        super(MigrateCommand, self).__init__(args)
+        super(UpMigrateCommand, self).__init__(args)
 
     def execute(self):
         for js in self.unapplied:
@@ -37,8 +37,16 @@ class MigrateCommand(BaseCommand):
             migrator.up()
 
         delattr(self, '_applied')
+
+class DownMigrateCommand(BaseCommand):
+    def execute(self):
+        print 'waiting...'
             
 
 class ListCommand(BaseCommand):
     def execute(self):
-        print 'this is ListCommand execute'
+        print 'show all migration js include applied and unapplied'
+        for js in self.applied:
+            print '[*] %s' % js
+        for js in self.unapplied:
+            print '[ ] %s' % js
