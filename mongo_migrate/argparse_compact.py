@@ -7,6 +7,7 @@ import mongo_migrate
 from mongo_migrate.cmd import UpMigrateCommand
 from mongo_migrate.cmd import DownMigrateCommand
 from mongo_migrate.cmd import ListCommand
+from mongo_migrate.cmd import NewCommand
 
 class Argument(object):
     def __init__(self):
@@ -49,6 +50,7 @@ class Argument(object):
             'up': 'UpMigrateCommand',
             'down': 'DownMigrateCommand',
             'list': 'ListCommand',
+            'new': 'NewCommand',
         }
         return eval(cmd_mapping[args.cmd])(args)
 

@@ -16,7 +16,7 @@ usage:
 
 -l: migration file location
 
-cmd: command, include up, down, list
+cmd: command, include up, down, list, new
 
 
 for django:

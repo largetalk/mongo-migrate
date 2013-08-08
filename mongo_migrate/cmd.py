@@ -43,7 +43,6 @@ class DownMigrateCommand(BaseCommand):
     def execute(self):
         print('waiting...')
             
-
 class ListCommand(BaseCommand):
     def execute(self):
         print('show all migration js include applied and unapplied')
@@ -51,3 +50,7 @@ class ListCommand(BaseCommand):
             print('[*] %s' % js)
         for js in self.unapplied:
             print('[ ] %s' % js)
+
+class NewCommand(BaseCommand):
+    def execute(self):
+        print('waiting...')
