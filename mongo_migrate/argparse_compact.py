@@ -1,3 +1,4 @@
+from __future__ import print_function
 import argparse
 import sys
 import traceback
@@ -78,7 +79,7 @@ if __name__ == '__main__':
     parser = Argument().create_parser(sys.argv[0])
     parser.print_help()
     args = parser.parse_args(sys.argv[1:])
-    print args
-    print args.database
-    print args.host
-    print args.port, type(args.port)
+    print(args)
+    print(args.database)
+    print(args.host)
+    print(args.port, type(args.port))

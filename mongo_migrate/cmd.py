@@ -1,3 +1,4 @@
+from __future__ import print_function
 from mongo_migrate.configs import MongoConfig
 from mongo_migrate.migrations import Migrator
 from pymongo import MongoClient
@@ -40,13 +41,13 @@ class UpMigrateCommand(BaseCommand):
 
 class DownMigrateCommand(BaseCommand):
     def execute(self):
-        print 'waiting...'
+        print('waiting...')
             
 
 class ListCommand(BaseCommand):
     def execute(self):
-        print 'show all migration js include applied and unapplied'
+        print('show all migration js include applied and unapplied')
         for js in self.applied:
-            print '[*] %s' % js
+            print('[*] %s' % js)
         for js in self.unapplied:
-            print '[ ] %s' % js
+            print('[ ] %s' % js)

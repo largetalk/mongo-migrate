@@ -1,4 +1,5 @@
 #coding=utf8
+from __future__ import print_function
 from mongo_migrate.configs import MongoConfig
 import subprocess
 import os, sys
@@ -10,7 +11,7 @@ class Migrator(object):
         self._fake = fake
 
     def up(self):
-        print 'migrating %s' % migration_js
+        print('migrating %s' % migration_js)
         command = u'mongo {host}:{port}/{db} --eval "target=\'{target}\'" \'{file}\''.format(**{'host': MongoConfig.host,
             'port': MongoConfig.port,
             'db': MongoConfig.db,
